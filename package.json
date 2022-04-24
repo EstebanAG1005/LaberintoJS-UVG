@@ -1,0 +1,19 @@
+{
+  "name": "laberintojs-uvg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EstebanAG1005/LaberintoJS-UVG.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EstebanAG1005/LaberintoJS-UVG/issues"
+  },
+  "homepage": "https://github.com/EstebanAG1005/LaberintoJS-UVG#readme"
+}
