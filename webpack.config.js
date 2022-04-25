@@ -16,6 +16,15 @@ export default {
                 test: /\.jsx?$/,
                 use: [{loader : 'babel-loader'}],
             },
+            {
+                test: /\.css$/,
+                use: ['css-hot-loader',],
+            },
+            {
+                test: /\.(png|jpg|gif|svg|mp3)$/,
+                use: [{loader: 'file-loader'}]
+            },
         ],
+    
     },
 }
