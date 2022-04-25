@@ -9,19 +9,20 @@ import Piso from '../../public/Imagenes/Piso.png'
 const w=5
 const h=5
 const b=50
-const Laberinto = () =>{
+const Laberinto = ({setGanar}) =>{
 
-    const loadMaze = () =>{
-        fetch("https://maze.juanelcaballo.club/?type=json&w="+width+"&h="+height).then(
-            (response)=>{
-                return response.json()
-            }   
-        ).then(
-            (response)=>{
-                setLaberinto(response)
-            }
-        )
+    const loadMaze = async () => {
+        
+        let fet = "https://maze.juanelcaballo.club/?type=json&w="+width+"&h="+height
+        
+        const response = await fetch(fet)
+            .then((response) => { return response.json() }
+            ).then((responseInJSON) => { return responseInJSON })
+
+        setLaberinto([...response])
+    
     }
+
     const [laberinto, setLaberinto] = useState([])
     const [x, setX] = useState(1)
     const [y, setY] = useState(1)
@@ -103,6 +104,13 @@ const Laberinto = () =>{
         background:'white',
         padding:'0  px'
     }
+    const pared = {
+        width: `${b}px`,
+        height: `${b}px`,
+        background: 'black',
+        gridColumnStart: x+1,
+        gridRowStart: y+1
+    }
    
     
     return (
@@ -131,7 +139,7 @@ const Laberinto = () =>{
                     return <div key={`${columnIndex}-${rowIndex}`} x={columnIndex} y={rowIndex} css = {{backgroundImage: `url(${Pared})`, height: '50px', width: '50px', backgroundSize: 'contain'}}/>
                 }
                 if(column==='p'){
-                    return <Jugador Imagen={Imagen}             
+                    return <Jugador key={'player'} Imagen={Imagen}             
                     />
                     
                 }
