@@ -2,6 +2,7 @@ import React from 'react'
 import Laberinto from './components/Laberinto.jsx'
 import Title from '../public/Imagenes/start-button.gif'
 import Win from '../public/Imagenes/Win.gif'
+import Fondo from '../public/Imagenes/Fondo.jpg'
 
 import { useState } from 'react'
 import {createRoot} from 'react-dom/client'
@@ -23,14 +24,14 @@ const App = () => {
                     <div css = {{
                         width: '100%',
                         height: '100%',
-                        backgroundColor: 'blue',
+                        backgroundImage: `url(${Fondo})`,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center'
                         }}>
                     
-                        <button css = {{backgroundImage: `url(${Win})`, height: '800px', width: '700px', backgroundSize: 'cover', marginTop:'10px'}} onClick={()=>{ setGanar(!ganar); setPlay(!play)}}>Reiniciar</button>
+                        <div css = {{backgroundImage: `url(${Win})`, height: '650px', width: '700px', backgroundSize: 'cover',  marginTop:'10px'}}/>
                     </div>
                 :
                     play ?
@@ -44,7 +45,7 @@ const App = () => {
                     <div css = {{
                         width: '100%',
                         height: '100%',
-                        backgroundColor: 'blue',
+                        backgroundImage: `url(${Fondo})`,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -52,7 +53,7 @@ const App = () => {
                         }}>
                     
                         <div css = {{backgroundImage: `url(${Title})`, height: '400px', width: '700px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', marginTop:'10px'}}/>
-                        <button css={{color: 'white', marginTop: '40px', backgroundColor: 'blue', width: '200px', height: '60px'}} onClick={()=>{ setPlay(!play)}}>Empezar</button>
+                        <button css={{color: 'white', marginTop: '40px', backgroundColor: 'transparent', width: '200px', height: '60px'}} onClick={()=>{ setPlay(!play)}}>Empezar</button>
                     </div>
                 
             }

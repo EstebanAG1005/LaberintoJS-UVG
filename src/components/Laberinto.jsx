@@ -4,6 +4,7 @@ import pared from '../../public/Imagenes/Wall.png'
 import goal from '../../public/Imagenes/Knuckles.gif'
 import audio from '../../public/audio/Musica.mp3'
 import Piso from '../../public/Imagenes/Piso.png'
+import Fondo from '../../public/Imagenes/Fondo.jpg'
 
 import {useEffect, useState, useCallback} from 'react'
 
@@ -150,11 +151,13 @@ const Laberinto = ({setGanar}) => {
         <div css = {{
             width: '100%',
             height: '100%',
-            backgroundColor: 'blue',
+            backgroundImage: `url(${Fondo})`,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            overflowY: 'scroll',
+            overflowX: 'hidden'
             }}>
 
             <div css ={{
@@ -186,7 +189,6 @@ const Laberinto = ({setGanar}) => {
                 justifyContent:'center',
                 width: '80vw',
                 height: '500px',
-                backgroundColor: 'blue',
                 padding: '20px'
             }}>
                 
