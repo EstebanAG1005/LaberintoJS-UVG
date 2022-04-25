@@ -13,7 +13,7 @@ const Laberinto = ({setGanar}) => {
     const w=5
     const h=5
     const [laberinto, setLaberinto] = useState([])
-    const [estado, setEstado] = useState('Normal')
+    const [statej, setState] = useState('Normal')
     const [height, setHeight] = useState(h)
     const [width, setWidth] = useState(w)
     const sound = new Audio(audio)
@@ -53,23 +53,23 @@ const Laberinto = ({setGanar}) => {
                 let x = oldState.findIndex((row) => row.indexOf('p') > -1)
                 let y = oldState[x].indexOf('p')
 
-                const newL = [...oldState]
+                const laberinto = [...oldState]
 
                 switch (llave) {
                 
                     case "a":
-                        setEstado('Izquierda')
-                        if(newL[x][y-1] === ' '){
-                            newL[x][y] = " "
-                            newL[x][y-1] = 'p'
+                        setState('Izquierda')
+                        if(laberinto[x][y-1] === ' '){
+                            laberinto[x][y] = " "
+                            laberinto[x][y-1] = 'p'
                             y = y-1
-                            return newL
+                            return laberinto
                             
-                        }else if(newL[x][y-1] === 'g'){
-                            newL[x][y] = " "
-                            newL[x][y-1] = 'p'
+                        }else if(laberinto[x][y-1] === 'g'){
+                            laberinto[x][y] = " "
+                            laberinto[x][y-1] = 'p'
                             y = y-1
-                            setEstado('Ganar')
+                            setState('Ganar')
                             victorycon = true
                             setTimeout(() => {setGanar(true)}, 2000)
                             
@@ -78,17 +78,17 @@ const Laberinto = ({setGanar}) => {
                         break;
 
                     case "d":
-                        setEstado('Derecha')
-                        if(newL[x][y+1] === ' '){
-                            newL[x][y] = " "
-                            newL[x][y+1] = 'p'
+                        setState('Derecha')
+                        if(laberinto[x][y+1] === ' '){
+                            laberinto[x][y] = " "
+                            laberinto[x][y+1] = 'p'
                             y = y+1
-                            return newL
-                        }else if(newL[x][y+1] === 'g'){
-                            newL[x][y] = " "
-                            newL[x][y+1] = 'p'
+                            return laberinto
+                        }else if(laberinto[x][y+1] === 'g'){
+                            laberinto[x][y] = " "
+                            laberinto[x][y+1] = 'p'
                             y = y+1
-                            setEstado('Ganar')
+                            setState('Ganar')
                             victorycon = true
                             setTimeout(() => {setGanar(true)}, 2000)
                             
@@ -96,17 +96,17 @@ const Laberinto = ({setGanar}) => {
                         break;
 
                     case "w":
-                        setEstado('Arriba')
-                        if(newL[x-1][y] === ' '){
-                            newL[x][y] = " "
-                            newL[x-1][y] = 'p'
+                        setState('Arriba')
+                        if(laberinto[x-1][y] === ' '){
+                            laberinto[x][y] = " "
+                            laberinto[x-1][y] = 'p'
                             x = x-1
-                            return newL
-                        }else if(newL[x-1][y] === 'g'){
-                            newL[x][y] = " "
-                            newL[x-1][y] = 'p'
+                            return laberinto
+                        }else if(laberinto[x-1][y] === 'g'){
+                            laberinto[x][y] = " "
+                            laberinto[x-1][y] = 'p'
                             x = x-1
-                            setEstado('Ganar')
+                            setState('Ganar')
                             victorycon = true
                             setTimeout(() => {setGanar(true)}, 2000)
                             
@@ -114,17 +114,17 @@ const Laberinto = ({setGanar}) => {
                         break;
                     
                     case "s":
-                        setEstado('Abajo')
-                        if(newL[x+1][y] === ' '){
-                            newL[x][y] = " "
-                            newL[x+1][y] = 'p'
+                        setState('Abajo')
+                        if(laberinto[x+1][y] === ' '){
+                            laberinto[x][y] = " "
+                            laberinto[x+1][y] = 'p'
                             x = x+1
-                            return newL
-                        }else if(newL[x+1][y] === 'g'){
-                            newL[x][y] = " "
-                            newL[x+1][y] = 'p'
+                            return laberinto
+                        }else if(laberinto[x+1][y] === 'g'){
+                            laberinto[x][y] = " "
+                            laberinto[x+1][y] = 'p'
                             x = x+1
-                            setEstado('Ganar')
+                            setState('Ganar')
                             victorycon = true
                             setTimeout(() => {setGanar(true);}, 2000)
                             
@@ -132,7 +132,7 @@ const Laberinto = ({setGanar}) => {
                         break;
 
                 }
-                return newL
+                return laberinto
             })
         }
         
@@ -148,25 +148,8 @@ const Laberinto = ({setGanar}) => {
     }, [])
 
     return (
-        <div css = {{
-            width: '100%',
-            height: '100%',
-            backgroundImage: `url(${Fondo})`,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            overflowY: 'scroll',
-            overflowX: 'hidden'
-            }}>
-
-            <div css ={{
-                color: 'white',
-                textAlign: 'center',
-                width: '100%',
-                paddingTop: '10px'
-                
-            }}>
+        <div css = {{width: '100%', height: '100%', backgroundImage: `url(${Fondo})`,display: 'flex',flexDirection: 'column', alignItems: 'center',justifyContent: 'center', overflowY: 'scroll',overflowX: 'hidden' }}>
+            <div css ={{ color: 'white', textAlign: 'center', width: '100%', paddingTop: '10px'}}>
                 <h1>Sonic</h1>
             </div>
 
@@ -182,53 +165,40 @@ const Laberinto = ({setGanar}) => {
                 <button onClick={loadMaze}>Recargar laberinto</button>
             </div>
             
-            <div css ={{
-                display: 'inline-block',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent:'center',
-                width: '80vw',
-                height: '500px',
-                padding: '20px'
-            }}>
-                
+            <div css ={{ display: 'inline-block', flexDirection: 'column', alignItems: 'center', justifyContent:'center', width: '80vw', height: '500px', padding: '20px'}}>   
             {
-                laberinto.map((row, i) => {
+                laberinto.map((row,rowIndex) => {
                         
                     return (
-                        <div llave = {i} css= {{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center'
-                        }}>
+                        <div llave = {rowIndex} css= {{ display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
                         {
-                            row.map((element, i2) => {
+                            row.map((column,columnIndex) => {
 
 
-                                if(element === '+' || element === '-' || element === '|' ){
+                                if(column === '+' || column === '-' || column === '|' ){
                                     
                                     return (
-                                        <div llave = {i2} css = {{backgroundImage: `url(${pared})`, height: '50px', width: '50px', backgroundSize: 'contain'}}/>
+                                        <div llave = {columnIndex} css = {{backgroundImage: `url(${pared})`, height: '50px', width: '50px', backgroundSize: 'contain'}}/>
                                     )
                                     
-                                }if(element===' '){
+                                }if(column===' '){
                                     return (
-                                        <div llave = {i2} css = {{backgroundImage: `url(${Piso})`, height: '50px', width: '50px', backgroundSize: 'contain'}}/>
+                                        <div llave = {columnIndex} css = {{backgroundImage: `url(${Piso})`, height: '50px', width: '50px', backgroundSize: 'contain'}}/>
                                     )
-                                }if(element === 'p'){
+                                }if(column === 'p'){
                                     
                                     return (
-                                        <Jugador llave={'player'} estado={estado} />
+                                        <Jugador llave={'player'} state={statej} />
                                     )
-                                }if(element === 'g'){
+                                }if(column === 'g'){
                                     
                                     return (
-                                        <div llave = {i2} css = {{backgroundImage: `url(${goal})`, height: '50px', width: '50px', backgroundSize: 'contain'}}/>
+                                        <div llave = {columnIndex} css = {{backgroundImage: `url(${goal})`, height: '50px', width: '50px', backgroundSize: 'contain'}}/>
                                     )
                                 }
                                 else{
                                     return (
-                                        <div llave = {i2} css = {{ height: '50px', width: '50px', border: '10px'}}/>
+                                        <div llave = {columnIndex} css = {{ height: '50px', width: '50px', border: '10px'}}/>
                                     )
                                 }
                                 
