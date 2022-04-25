@@ -9,13 +9,13 @@ import Ganar from '../../public/Imagenes/Ganar.gif'
 
 import {useState, useEffect} from 'react'
 
-const Jugador = ({state}) => {
+const Jugador = ({estado}) => {
 
     const [Imagen, setImagen] = useState(null)
 
     //logica para determinar la animacion del personaje
     useEffect(()=> {
-        switch(state){
+        switch(estado){
             case 'Normal':
                 setImagen(Normal)
                 break;
@@ -36,7 +36,7 @@ const Jugador = ({state}) => {
                 break;
             
         }
-    },[state])
+    },[estado])
 
 
     return (
