@@ -10,7 +10,7 @@ import {createRoot} from 'react-dom/client'
 const App = () => {
 
     const [play, setPlay] = useState(false)
-    const [gano, setGano] = useState(false)
+    const [ganar, setGanar] = useState(false)
 
     return (
         <div css = {{
@@ -19,19 +19,18 @@ const App = () => {
 
         }}>
             {
-                gano ? 
+                ganar ? 
                     <div css = {{
                         width: '100%',
                         height: '100%',
-                        backgroundColor: '#E6833A',
+                        backgroundColor: 'blue',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center'
                         }}>
                     
-                        <div css = {{backgroundImage: `url(${Win})`, height: '400px', width: '700px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', marginTop:'10px'}}/>
-                        <button css={{color: 'white', marginTop: '40px', backgroundColor: '#994D17', border: '0px', borderRadius: '5px', alignSelf: 'center', width: '200px', height: '60px'}} onClick={()=>{ setGano(!gano); setPlay(!play)}}>Reiniciar</button>
+                        <button css = {{backgroundImage: `url(${Win})`, height: '800px', width: '700px', backgroundSize: 'cover', marginTop:'10px'}} onClick={()=>{ setGanar(!ganar); setPlay(!play)}}>Reiniciar</button>
                     </div>
                 :
                     play ?
@@ -39,21 +38,21 @@ const App = () => {
                         height: '100vh',
                         width: '100vw'
                     }}>
-                        <Laberinto setGano={setGano} gano={gano}/>
+                        <Laberinto setGanar={setGanar} ganar={ganar}/>
                     </div>
                     :
                     <div css = {{
                         width: '100%',
                         height: '100%',
-                        backgroundColor: '#E6833A',
+                        backgroundColor: 'blue',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center'
                         }}>
-                       
+                    
                         <div css = {{backgroundImage: `url(${Title})`, height: '400px', width: '700px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', marginTop:'10px'}}/>
-                        <button css={{color: 'white', marginTop: '40px', backgroundColor: '#994D17', border: '0px', borderRadius: '5px', alignSelf: 'center', width: '200px', height: '60px'}} onClick={()=>{ setPlay(!play)}}>Empezar</button>
+                        <button css={{color: 'white', marginTop: '40px', backgroundColor: 'blue', width: '200px', height: '60px'}} onClick={()=>{ setPlay(!play)}}>Empezar</button>
                     </div>
                 
             }

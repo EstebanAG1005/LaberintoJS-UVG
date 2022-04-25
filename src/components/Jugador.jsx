@@ -44,7 +44,7 @@ const Jugador = ({estado}) => {
             backgroundImage: `url(${Imagen})`, 
             height: '50px', 
             width: '50px', 
-            backgroundSize: 'cover', 
+            backgroundSize: 'cover',
             }}/>
     )
 
